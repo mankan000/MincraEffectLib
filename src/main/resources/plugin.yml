@@ -1,0 +1,35 @@
+name: MincraEffectLib
+version: ${project.version}
+main: jp.mincra.effectlib.mincraeffectlib.MincraEffectLib
+api-version: 1.13
+authors: [mankan000]
+#著者。好きに追加するﾖﾛｼ
+description: Magical effects for mincra
+prefix: MincraEffectLib
+#ログの接頭辞。省略した場合は[name:]の項目のものが使用される
+load: POSTWORLD
+#ワールド読み込みより前にプラグインを読み込ませたい場合は [load: STARTUP] に変更
+#depend: ##依存プラグイン##
+#softdepend: ##このプラグインより先に起動すべきプラグイン##
+#loadbefore: ##このプラグインより後に起動すべきプラグイン##
+default-permission: OP
+commands:
+  meffect:
+    description: Commands for MincraEffectLib.help
+    usage: /<command> [list/basic]
+    permission: mincra.effectlib
+  meffect list:
+    description: List of Effects
+    usage: /<command>
+    permission: mincra.effectlib.list
+  meffect basic:
+    permission: mincra.effectlib.basic
+    description: test some particle
+    usage: /<command> basic <particle> [<self/target>] <count>
+
+permissions:
+  mincra.effectlib.*:
+    description: Gives access to all commands
+    children:
+      mincra.effectlib.help: true
+      mincra.effectlib.list: true
