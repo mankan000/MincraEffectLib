@@ -1,11 +1,10 @@
 package jp.mincra.effectlib.mincraeffectlib.Effects;
 
+import jp.mincra.effectlib.mincraeffectlib.LocationManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
-import org.bukkit.util.Vector;
-
 
 
 public class Basic {

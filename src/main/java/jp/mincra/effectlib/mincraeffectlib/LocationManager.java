@@ -1,4 +1,4 @@
-package jp.mincra.effectlib.mincraeffectlib.Effects;
+package jp.mincra.effectlib.mincraeffectlib;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
