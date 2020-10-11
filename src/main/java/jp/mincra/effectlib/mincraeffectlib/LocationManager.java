@@ -1,5 +1,9 @@
 package jp.mincra.effectlib.mincraeffectlib;
 
+import com.sun.istack.internal.Nullable;
+import javax.annotation.Nonnull;
+
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
@@ -10,27 +14,39 @@ import java.util.List;
 
 
 public class LocationManager {
+
+    @Nonnull
     public Location CasterFront(Entity caster){
         Location loc = caster.getLocation();
         loc.add(CasterEyeDirection(loc).multiply(5));
         return loc;
     }
-    public Location LookingAt(Entity caster) {
+
+    @Nonnull
+    public Location LookingAt(Entity caster,@Nullable Double allowance) {
         Location loc = caster.getLocation();
+        if (allowance == null) allowance = 1D;
         Vector cv = CasterEyeDirection(loc);
         Collection<Entity> c = caster.getNearbyEntities(10d,10d,10d);
         Double rad ;
-        List<Vector> el = new ArrayList<>();
+        List<Double> radlist = new ArrayList<>();
         Vector v = new Vector(0,0,0) ;
         for(Entity e : c){
             Location l = e.getLocation();
             v.setX(l.getX() - loc.getX());
             v.setY(l.getY() - loc.getY());
             v.setX(l.getZ() - loc.getZ());
-
+            v.normalize();
+            rad = Math.acos(cv.getX() * v.getX() + cv.getY() * v.getY() + cv.getZ() * v.getZ());
+            if (rad <= allowance) {
+                if (caster.hasPermission("mincra.effectlib.debug")) caster.sendMessage(ChatColor.GREEN + "[MincraEffectLib]" + ChatColor.YELLOW + "LookingAt" + e +"/ Position" + l);
+                return l;
+            }
         }
         return loc;
     }
+
+    @Nonnull
     private Vector CasterEyeDirection(Location loc){
         Vector vec = new Vector(0f,0f,1f);
         float anglePitch = loc.getPitch();
