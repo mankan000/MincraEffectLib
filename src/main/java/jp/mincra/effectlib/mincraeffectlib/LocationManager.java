@@ -5,12 +5,13 @@ import javax.annotation.Nonnull;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.util.Vector;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 
 public class LocationManager {
@@ -39,11 +40,18 @@ public class LocationManager {
             v.normalize();
             rad = Math.acos(cv.getX() * v.getX() + cv.getY() * v.getY() + cv.getZ() * v.getZ());
             if (rad <= allowance) {
-                if (caster.hasPermission("mincra.effectlib.debug")) caster.sendMessage(ChatColor.GREEN + "[MincraEffectLib]" + ChatColor.YELLOW + "LookingAt" + e +"/ Position" + l);
+                if (caster.hasPermission("mincra.effectlib.debug"))
+                    caster.sendMessage(ChatColor.GREEN + "[MincraEffectLib]" + ChatColor.YELLOW + "LookingAt" + e + "/ Position" + l);
                 return l;
             }
         }
-        return loc;
+        //TargetとなるEntityが定まらなかった場合、見ているブロック付近で再生
+        if (caster instanceof LivingEntity){
+            LivingEntity Lcaster = (LivingEntity)caster;
+            Block b = Lcaster.getTargetBlockExact(10);
+            return b.getLocation().add(cv.multiply(-1));
+        }
+        return loc.add(cv.multiply(10));
     }
 
     @Nonnull
@@ -56,4 +64,6 @@ public class LocationManager {
         vec.normalize();
         return vec;
     }
+
+
 }
