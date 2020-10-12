@@ -24,13 +24,12 @@ public class LocationManager {
     }
 
     @Nonnull
-    public Location LookingAt(Entity caster,@Nullable Double allowance) {
+    public Location LookingAtEntity(Entity caster,@Nullable Double allowance) {
         Location loc = caster.getLocation();
         if (allowance == null) allowance = 1D;
         Vector cv = CasterEyeDirection(loc);
         Collection<Entity> c = caster.getNearbyEntities(10d,10d,10d);
         Double rad ;
-        List<Double> radlist = new ArrayList<>();
         Vector v = new Vector(0,0,0) ;
         for(Entity e : c){
             Location l = e.getLocation();
@@ -46,9 +45,17 @@ public class LocationManager {
             }
         }
         //TargetとなるEntityが定まらなかった場合、見ているブロック付近で再生
+        return LookingAtBlock(caster,cv);
+    }
+
+    @Nonnull
+    public Location LookingAtBlock(Entity caster , @Nullable Vector cv){
+        Location loc = caster.getLocation();
+        if (cv == null) cv = CasterEyeDirection(loc);
         if (caster instanceof LivingEntity){
             LivingEntity Lcaster = (LivingEntity)caster;
             Block b = Lcaster.getTargetBlockExact(10);
+            if (b == null) loc.add(cv.multiply(10));
             return b.getLocation().add(cv.multiply(-1));
         }
         return loc.add(cv.multiply(10));
