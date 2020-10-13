@@ -17,15 +17,15 @@ import java.util.*;
 public class LocationManager {
 
     @Nonnull
-    public Location CasterFront(Entity caster){
-        Location loc = caster.getLocation();
+    public Location CasterFront(LivingEntity caster){
+        Location loc = caster.getEyeLocation();
         loc.add(CasterEyeDirection(loc).multiply(5));
         return loc;
     }
 
     @Nonnull
-    public Location LookingAtEntity(Entity caster,@Nullable Double allowance) {
-        Location loc = caster.getLocation();
+    public Location LookingAtEntity(LivingEntity caster,@Nullable Double allowance) {
+        Location loc = caster.getEyeLocation();
         if (allowance == null) allowance = 1D;
         Vector cv = CasterEyeDirection(loc);
         Collection<Entity> c = caster.getNearbyEntities(10d,10d,10d);
@@ -49,16 +49,13 @@ public class LocationManager {
     }
 
     @Nonnull
-    public Location LookingAtBlock(Entity caster , @Nullable Vector cv){
-        Location loc = caster.getLocation();
+    public Location LookingAtBlock(LivingEntity caster , @Nullable Vector cv){
+        Location loc = caster.getEyeLocation();
+        int dest = 10;
         if (cv == null) cv = CasterEyeDirection(loc);
-        if (caster instanceof LivingEntity){
-            LivingEntity Lcaster = (LivingEntity)caster;
-            Block b = Lcaster.getTargetBlockExact(10);
-            if (b == null) loc.add(cv.multiply(10));
-            return b.getLocation().add(cv.multiply(-1));
-        }
-        return loc.add(cv.multiply(10));
+        Block b = caster.getTargetBlockExact(dest);
+        if (b == null) return loc.add(cv.multiply(dest));
+        return b.getLocation().add(cv.multiply(-1));
     }
 
     @Nonnull
