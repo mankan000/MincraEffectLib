@@ -9,20 +9,25 @@ import org.bukkit.entity.Entity;
 
 public class Basic {
 
-    public Basic(Entity targetentity, String[] args) {
+    public Basic(Entity caster, String[] args) {
         //usage: /<command> basic <particle> [self/target] <count>
         LocationManager lm = new LocationManager();
-        Location loc = targetentity.getLocation();
+        Location loc = caster.getLocation();
         int count = 10;
         if (args[3]!=null) {
             count = Integer.valueOf(args[3]);
         }
         if (args[2].equals("target")) {
-            targetentity.sendMessage(ChatColor.GREEN+"[MincraEffectlib]"+ChatColor.RESET+"未実装です");
+            loc = lm.LookingAtEntity(caster,1D);
         } else {
-            loc = lm.CasterFront(targetentity);
+            loc = lm.CasterFront(caster);
         }
         Particle particle = Particle.valueOf(args[1]);
-        loc.getWorld().spawnParticle(particle,loc,count);
+        if (particle == null) particle = Particle.EXPLOSION_HUGE;
+        try{
+            loc.getWorld().spawnParticle(particle,loc,count);
+        } catch(NullPointerException n){
+            caster.sendMessage(ChatColor.GREEN + "[MincraEffectLib]" + ChatColor.RED + "spawnParticle失敗。");
+        }
     }
 }
