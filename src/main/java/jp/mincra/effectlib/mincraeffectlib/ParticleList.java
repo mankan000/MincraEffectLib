@@ -17,7 +17,7 @@ public class ParticleList {
             caster.sendMessage(plist[r]);
             Particle particle = Particle.valueOf(plist[r]);
             LocationManager lm = new LocationManager();
-            LivingEntity le = (LivingEntity) caster
+            LivingEntity le = (LivingEntity) caster;
             caster.getLocation().getWorld().spawnParticle(particle,lm.CasterFront(le),1);
         } else {
             caster.sendMessage("ASH  /" +
