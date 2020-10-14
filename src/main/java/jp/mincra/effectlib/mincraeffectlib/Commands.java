@@ -12,10 +12,13 @@ import org.bukkit.entity.Player;
 
 public class Commands implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (args[0] == "particlelist") args[1] = "plist";
         switch (args[0]) {
             case "list":
                 sender.sendMessage("テスト１");
                 return true;
+            case "plist" :
+                new ParticleList((Entity)sender, args);
             case "basic":
                 if (sender instanceof Entity && args.length > 1) {
                     Entity entity = ((Entity) sender);

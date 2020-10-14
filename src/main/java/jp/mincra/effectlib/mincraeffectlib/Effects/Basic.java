@@ -14,6 +14,7 @@ public class Basic {
         //usage: /<command> basic <particle> [self/target] <count>
         LocationManager lm = new LocationManager();
         LivingEntity le = (LivingEntity)caster;
+        args[1] = args[1].toUpperCase();
         Location loc ;
         int count = 10;
         if (args[3]!=null) {
