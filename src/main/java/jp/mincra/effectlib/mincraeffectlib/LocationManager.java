@@ -17,14 +17,14 @@ import java.util.*;
 public class LocationManager {
 
     @Nonnull
-    public Location CasterFront(LivingEntity caster){
+    public static Location CasterFront(LivingEntity caster){
         Location loc = caster.getEyeLocation();
         loc.add(CasterEyeDirection(loc).multiply(5));
         return loc;
     }
 
     @Nonnull
-    public Location LookingAtEntity(LivingEntity caster,@Nullable Double allowance) {
+    public static Location LookingAtEntity(LivingEntity caster,@Nullable Double allowance) {
         Location loc = caster.getEyeLocation();
         if (allowance == null) allowance = 1D;
         Vector cv = CasterEyeDirection(loc);
@@ -49,7 +49,7 @@ public class LocationManager {
     }
 
     @Nonnull
-    public Location LookingAtBlock(LivingEntity caster , @Nullable Vector cv){
+    public static Location LookingAtBlock(LivingEntity caster, @Nullable Vector cv){
         Location loc = caster.getEyeLocation();
         int dest = 10;
         if (cv == null) cv = CasterEyeDirection(loc);
@@ -59,7 +59,7 @@ public class LocationManager {
     }
 
     @Nonnull
-    private Vector CasterEyeDirection(Location loc){
+    private static Vector CasterEyeDirection(Location loc){
         Vector vec = new Vector(0f,0f,1f);
         float anglePitch = loc.getPitch();
         float angleYaw = loc.getYaw();

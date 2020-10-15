@@ -12,7 +12,6 @@ public class Basic {
 
     public Basic(Entity caster, String[] args) {
         //usage: /<command> basic <particle> [self/target] <count>
-        LocationManager lm = new LocationManager();
         LivingEntity le = (LivingEntity)caster;
         args[1] = args[1].toUpperCase();
         Location loc ;
@@ -21,9 +20,9 @@ public class Basic {
             count = Integer.valueOf(args[3]);
         }
         if (args[2].equals("target")) {
-            loc = lm.LookingAtEntity(le,1D);
+            loc = LocationManager.LookingAtEntity(le,1D);
         } else {
-            loc = lm.CasterFront(le);
+            loc = LocationManager.CasterFront(le);
         }
         Particle particle = Particle.valueOf(args[1]);
         if (particle == null) particle = Particle.EXPLOSION_HUGE;
