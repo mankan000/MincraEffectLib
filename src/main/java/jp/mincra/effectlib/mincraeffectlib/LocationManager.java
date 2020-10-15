@@ -1,6 +1,6 @@
 package jp.mincra.effectlib.mincraeffectlib;
 
-import com.sun.istack.internal.Nullable;
+import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 
 import org.bukkit.ChatColor;

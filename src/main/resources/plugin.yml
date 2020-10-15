@@ -25,7 +25,7 @@ commands:
   meffect basic:
     permission: mincra.effectlib.basic
     description: test some particle
-    usage: /<command> basic <particle> [<self/target>] <count>
+    usage: /<command> basic <particle> <self/target> <count>
 
 permissions:
   mincra.effectlib.*:

@@ -18,6 +18,7 @@ public class Basic {
         int count = 10;
         if (args[3]!=null) {
             count = Integer.valueOf(args[3]);
+            caster.sendMessage("TEST01");
         }
         if (args[2].equals("target")) {
             loc = LocationManager.LookingAtEntity(le,1D);

@@ -1,8 +1,10 @@
 package jp.mincra.effectlib.mincraeffectlib;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Particle;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
@@ -10,17 +12,31 @@ import java.util.*;
 
 public class ParticleList {
     private static final List<String> plist = setParticleList();
-    public ParticleList(Entity caster,String[] args){
-        if (args[0].equals("random")) {
-            Random random = new Random();
-            int r = random.nextInt(78);
-            caster.sendMessage(plist.get(r));
-            Particle particle = Particle.valueOf(plist.get(r));
-            LivingEntity le = (LivingEntity) caster;
-            caster.getLocation().getWorld().spawnParticle(particle,LocationManager.CasterFront(le),1);
+    public ParticleList(CommandSender ccaster, String[] args){
+        Random random = new Random();
+        int r = random.nextInt(78);
+        if (ccaster instanceof LivingEntity) {
+            Entity caster = (Entity) ccaster;
+            if (args[1].isEmpty()) {
+                caster.sendMessage(ChatColor.GREEN + "[MincraEffectLib]" + ChatColor.BLUE + "List of Particle");
+                caster.sendMessage(String.valueOf(String.valueOf(plist)));
+           } else if (args[1].equals("random")) {
+                caster.sendMessage(plist.get(r));
+                Particle particle = Particle.valueOf(plist.get(r));
+                LivingEntity le = (LivingEntity) caster;
+                caster.getLocation().getWorld().spawnParticle(particle, LocationManager.CasterFront(le), 1);
+            } else {
+                caster.sendMessage(ChatColor.GREEN + "[MincraEffectLib]" + ChatColor.BLUE + "List of Particle");
+                caster.sendMessage(String.valueOf(String.valueOf(plist)));
+            }
         } else {
-            caster.sendMessage(ChatColor.GREEN + "[MincraEffectLib]"+ ChatColor.BLUE + "List of Particle");
-            caster.sendMessage(String.valueOf(plist));
+            if (args[1].isEmpty()){
+                Bukkit.getLogger().info(plist.get(r));
+            } else if (args[1].equals("random")){
+                Bukkit.getLogger().info(String.valueOf(plist));
+            } else {
+                Bukkit.getLogger().info(plist.get(r));
+            }
         }
     }
     private static List<String> setParticleList(){
