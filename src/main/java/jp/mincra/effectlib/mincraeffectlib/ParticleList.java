@@ -1,5 +1,6 @@
 package jp.mincra.effectlib.mincraeffectlib;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
@@ -18,84 +19,8 @@ public class ParticleList {
             LivingEntity le = (LivingEntity) caster;
             caster.getLocation().getWorld().spawnParticle(particle,LocationManager.CasterFront(le),1);
         } else {
-            caster.sendMessage("ASH  /" +
-                    "BARRIER  /" +
-                    "BLOCK_CRACK  \n" +
-                    "BLOCK_DUST  /" +
-                    "BUBBLE_COLUMN_UP  /" +
-                    "BUBBLE_POP  \n" +
-                    "CAMPFIRE_COSY_SMOKE  /" +
-                    "CAMPFIRE_SIGNAL_SMOKE  /" +
-                    "CLOUD  \n" +
-                    "COMPOSTER  /" +
-                    "CRIMSON_SPORE  /" +
-                    "CRIT  \n" +
-                    "CRIT_MAGIC  /" +
-                    "CURRENT_DOWN  /" +
-                    "DAMAGE_INDICATOR  \n" +
-                    "DOLPHIN  /" +
-                    "DRAGON_BREATH  /" +
-                    "DRIP_LAVA  \n" +
-                    "DRIP_WATER  /" +
-                    "DRIPPING_HONEY  /" +
-                    "DRIPPING_OBSIDIAN_TEAR  \n" +
-                    "ENCHANTMENT_TABLE  /" +
-                    "END_ROD  /" +
-                    "EXPLOSION_HUGE  \n" +
-                    "EXPLOSION_LARGE  /" +
-                    "EXPLOSION_NORMAL  /" +
-                    "FALLING_DUST  \n" +
-                    "FALLING_HONEY  /" +
-                    "FALLING_LAVA  /" +
-                    "FALLING_NECTAR  \n" +
-                    "FALLING_OBSIDIAN_TEAR  /" +
-                    "FALLING_WATER  /" +
-                    "FIREWORKS_SPARK  \n" +
-                    "FLAME  /" +
-                    "FLASH  /" +
-                    "HEART  \n" +
-                    "ITEM_CRACK  /" +
-                    "LANDING_HONEY  /" +
-                    "LANDING_LAVA  \n" +
-                    "LANDING_OBSIDIAN_TEAR  /" +
-                    "LAVA  /" +
-                    "LEGACY_BLOCK_CRACK  \n" +
-                    "LEGACY_BLOCK_DUST  /" +
-                    "LEGACY_FALLING_DUST  /" +
-                    "MOB_APPEARANCE  \n" +
-                    "NAUTILUS  /" +
-                    "NOTE  /" +
-                    "PORTAL  \n" +
-                    "REDSTONE  /" +
-                    "REVERSE_PORTAL  /" +
-                    "SLIME  \n" +
-                    "SMOKE_LARGE  /" +
-                    "SMOKE_NORMAL  /" +
-                    "SNEEZE  \n" +
-                    "SNOW_SHOVEL  /" +
-                    "SNOWBALL  /" +
-                    "SOUL  \n" +
-                    "SOUL_FIRE_FLAME  /" +
-                    "SPELL  /" +
-                    "SPELL_INSTANT  \n" +
-                    "SPELL_MOB  /" +
-                    "SPELL_MOB_AMBIENT  /" +
-                    "SPELL_WITCH  \n" +
-                    "SPIT  /" +
-                    "SQUID_INK  /" +
-                    "SUSPENDED  \n" +
-                    "SUSPENDED_DEPTH  /" +
-                    "SWEEP_ATTACK  /" +
-                    "TOTEM  \n" +
-                    "TOWN_AURA  /" +
-                    "VILLAGER_ANGRY  /" +
-                    "VILLAGER_HAPPY  \n" +
-                    "WARPED_SPORE  /" +
-                    "WATER_BUBBLE  /" +
-                    "WATER_DROP  \n" +
-                    "WATER_SPLASH  \n" +
-                    "WATER_WAKE  \n" +
-                    "WHITE_ASH");
+            caster.sendMessage(ChatColor.GREEN + "[MincraEffectLib]"+ ChatColor.BLUE + "List of Particle");
+            caster.sendMessage(String.valueOf(plist));
         }
     }
     private static List<String> setParticleList(){
