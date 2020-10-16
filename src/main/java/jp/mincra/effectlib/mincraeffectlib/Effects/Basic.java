@@ -26,7 +26,7 @@ public class Basic {
             loc = LocationManager.CasterFront(le);
         }
         Particle particle = Particle.valueOf(args[1]);
-        if (particle == null) particle = Particle.EXPLOSION_HUGE;
+        //if (particle == null) particle = Particle.EXPLOSION_HUGE;
         try{
             loc.getWorld().spawnParticle(particle,loc,count);
         } catch(NullPointerException n){

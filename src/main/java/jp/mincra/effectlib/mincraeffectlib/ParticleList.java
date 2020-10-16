@@ -24,10 +24,14 @@ public class ParticleList {
                 caster.sendMessage(plist.get(r));
                 Particle particle = Particle.valueOf(plist.get(r));
                 LivingEntity le = (LivingEntity) caster;
-                caster.getLocation().getWorld().spawnParticle(particle, LocationManager.CasterFront(le), 1);
+                caster.getLocation().getWorld().spawnParticle(particle, le.getLocation(), 1);
             } else {
+                StringBuilder ss = new StringBuilder();
+                for (String s : plist) {
+                    ss.append(s).append(" / ");
+                }
                 caster.sendMessage(ChatColor.GREEN + "[MincraEffectLib]" + ChatColor.BLUE + "List of Particle");
-                caster.sendMessage(String.valueOf(String.valueOf(plist)));
+                caster.sendMessage(String.valueOf(ss));
             }
         } else {
             if (args[1].isEmpty()){
