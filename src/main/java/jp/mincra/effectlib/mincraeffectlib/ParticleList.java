@@ -18,7 +18,7 @@ public class ParticleList {
         int r = random.nextInt(78);
         if (ccaster instanceof LivingEntity) {
             Entity caster = (Entity) ccaster;
-            if (args[1].isEmpty()) {
+            if (args.length < 2) {
                 caster.sendMessage(ChatColor.GREEN + "[MincraEffectLib]" + ChatColor.BLUE + "List of Particle");
                 caster.sendMessage(plist2);
            } else if (args[1].equals("random")) {
@@ -30,12 +30,11 @@ public class ParticleList {
                 caster.sendMessage("パラメタが不正です。");
             }
         } else {
-            if (args[1].isEmpty()){
-                Bukkit.getLogger().info(plist.get(r));
-                Particle particle = Particle.valueOf(plist.get(r));
-                Bukkit.getLogger().info(String.valueOf(particle));
+            if (args.length < 2){
+                Bukkit.getLogger().info(ChatColor.GREEN + "[MincraEffectLib]" + ChatColor.BLUE + "List of Particle");
+                Bukkit.getLogger().info(String.valueOf(plist2));
             } else if (args[1].equals("random")){
-                Bukkit.getLogger().info(String.valueOf(plist));
+                Bukkit.getLogger().info(String.valueOf(plist.get(r)));
             } else {
                 Bukkit.getLogger().info("パラメタが不正です。");
             }
