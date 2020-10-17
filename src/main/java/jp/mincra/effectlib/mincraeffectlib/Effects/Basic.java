@@ -16,7 +16,7 @@ public class Basic {
         args[1] = args[1].toUpperCase();
         Location loc ;
         int count = 10;
-        if (args[3]!=null) {
+        if (args.length < 4) {
             count = Integer.valueOf(args[3]);
             caster.sendMessage("TEST01");
         }
