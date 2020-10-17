@@ -5,7 +5,7 @@ import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
 
 public class MagicCircleHorizon {
-    public void MagicCircleHorizon(Entity caster, String _particle){
+    public MagicCircleHorizon(Entity caster, String _particle){
         Particle particle = Particle.valueOf(_particle);
         Location loc = caster.getLocation();
         float kakeru=1.6F;

@@ -12,18 +12,27 @@ import org.bukkit.entity.Player;
 
 public class Commands implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args[0].equals("particlelist")) args[0] = "plist";
+        Entity caster = null;
+        if (sender instanceof Entity) caster = (Entity)sender;
         switch (args[0]) {
             case "list":
                 sender.sendMessage("テスト１");
                 return true;
+            case "particlelist":
             case "plist" :
                 new ParticleList(sender, args);
                 return true;
+            case "magiccirclehorizon":
+            case "magiccirclehorizontal":
+            case "magiccircleh":
+            case "mch":
+                if (sender instanceof Entity && args.length > 1) {
+                    new MagicCircleHorizon(caster, args[1]);
+                }
+                return true;
             case "basic":
                 if (sender instanceof Entity && args.length > 1) {
-                    Entity entity = ((Entity) sender);
-                    new Basic(entity, args);
+                    new Basic(caster, args);
                     return true;
                 } else {
                     sender.sendMessage("[MincraEffectLib] パラメタが足りません");
