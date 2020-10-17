@@ -35,11 +35,19 @@ public class Commands implements CommandExecutor {
                     new Basic(caster, args);
                     return true;
                 } else {
-                    sender.sendMessage("[MincraEffectLib] パラメタが足りません");
-                    return false;
+                    return CommandErrorManager(sender);
                 }
             default:
                 return false;
         }
+    }
+
+    private boolean CommandErrorManager(CommandSender sender) {
+        if (sender instanceof Entity){
+            sender.sendMessage("[MincraEffectLib] パラメタが足りません");
+        } else {
+            sender.sendMessage("[MincraEffectLib] コンソールからの実行はできません");
+        }
+        return false;
     }
 }
