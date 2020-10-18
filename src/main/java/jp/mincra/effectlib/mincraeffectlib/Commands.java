@@ -30,6 +30,12 @@ public class Commands implements CommandExecutor {
                     new MagicCircleHorizon(caster, args[1]);
                 }
                 return true;
+            case "magiccirclehorizonanimation":
+            case "mcha":
+                if (sender instanceof Entity && args.length > 1) {
+                    new MagicCircleHorizonAnimation(caster, args[1]);
+                }
+                return true;
             case "basic":
                 if (sender instanceof Entity && args.length > 1) {
                     new Basic(caster, args);

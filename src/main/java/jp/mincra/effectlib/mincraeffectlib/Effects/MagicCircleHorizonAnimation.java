@@ -4,23 +4,18 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
 
-public class MagicCircleHorizon {
-    public MagicCircleHorizon(Entity caster, String _particle){
+public class MagicCircleHorizonAnimation {
+    public MagicCircleHorizonAnimation(Entity caster, String _particle){
         Particle particle = Particle.valueOf(_particle);
         Location loc = caster.getLocation();
         float kakeru = 1.6F;
         float kakeru2 = kakeru * 1.25F;
         float p=0.2F;
-        //BukkitTask task=new Magicsquare(player,s,kakeru,kakeru2,kakeru3,p,loc).runTaskLater(this,40);
-        //BukkitTask task2=new Magicsquare2(player,s,kakeru,kakeru2,kakeru3,p,loc).runTaskLater(this,40);
-        //BukkitTask task3=new Magicsquare3(player,s,kakeru,kakeru2,kakeru3,p,loc).runTaskLater(this,40);
+        //360/2/5
+        //20
+        //4
         for(float i=0;i<360;i=i+2F){
             loc.getWorld().spawnParticle(particle, loc.getX()+Math.sin(Math.toRadians(i))*kakeru, loc.getY()+p, loc.getZ()+Math.cos(Math.toRadians(i))*kakeru, 1, 0, 0, 0, 0);
-        }
-		/*for(float i=0;i<360;i=i+0.5F){
-			((CraftWorld) player.getWorld()).getHandle().a("enchantmenttable", loc.getX()+Math.sin(Math.toRadians(i))*kakeru3, loc.getY()+p, loc.getZ()+Math.cos(Math.toRadians(i))*kakeru3, 1, 0, 0, 0, 0);
-		}*/
-        for(float i=0;i<360;i=i+2F){
             loc.getWorld().spawnParticle(particle, loc.getX()+Math.sin(Math.toRadians(i))*kakeru2, loc.getY()+p, loc.getZ()+Math.cos(Math.toRadians(i))*kakeru2, 1, 0, 0, 0, 0);
         }
         //1画
@@ -84,3 +79,5 @@ public class MagicCircleHorizon {
         }
     }
 }
+
+
