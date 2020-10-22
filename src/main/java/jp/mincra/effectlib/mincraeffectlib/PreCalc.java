@@ -1,8 +1,9 @@
 package jp.mincra.effectlib.mincraeffectlib;
 
-class PreCalc {
-    static double posMCH[][][] = new double[10][2][60];
-    private static double posMCHc [][] = new double [2][180];
+public class PreCalc {
+    static double posMCHs[][][] = new double[5][2][20];
+    static double posMCHp[][][] = new double[5][2][20];
+    public static double[][] posMCHc = new double [2][180];
     static void PreCalculation() {
         int ii = 0;
         //public float posMCH[][][] = new float[10][2][60];
@@ -12,92 +13,31 @@ class PreCalc {
             posMCHc[2][ii] = Math.cos(Math.toRadians(i));
             ii ++;
         }
-        //1画
-        ii = 0;
-        for(float x=-0.95F;x<0.95F;x=x+0.05F){
-            posMCH[1][1][ii] = x;
-            posMCH[1][2][ii] = 0.309D;
-            ii ++;
-        }
-        //2画
-        double y = 0.309D;
-        ii = 0;
-        for(float x=0.95F;x>-0.58F;x=x-0.05F){
-            posMCH[1][1][ii] = x;
-            posMCH[1][2][ii] = y;
-            ii ++;
-            y=y-0.0360D;
-        }
-        //3画
-        y=-0.809D;
-        ii = 0;
-        for(float x=-0.58F;x<0F;x=x+0.01F){
-            posMCH[1][1][ii] = x;
-            posMCH[1][2][ii] = y;
-            ii ++;
-            y=y+0.03007D;
-        }
-        //4画
-        y=1D;
-        ii = 0;
-        for(float x=0F;x<0.58F;x=x+0.01F){
-            posMCH[1][1][ii] = x;
-            posMCH[1][2][ii] = y;
-            ii ++;
-            y=y-0.03007F;
-        }
-        //5画
-        y=-0.809F;
-        ii = 0;
-        for(float x=0.5877F;x>-0.951F;x=x-0.05F){
-            posMCH[1][1][ii] = x;
-            posMCH[1][2][ii] = y;
-            ii ++;
-            y=y+0.0360F;
+        //
+        for(ii=0; ii < 20; ii++){
+            posMCHs[1][1][ii] = -0.95 + (0.95 * ii);
+            posMCHs[1][2][ii] = 0.309;
+            posMCHs[2][1][ii] = 0.95 - (0.0765 * ii);
+            posMCHs[2][2][ii] = 0.0309 - (0.0559 * ii);
+            posMCHs[3][1][ii] = -0.58 + (0.029 * ii);
+            posMCHs[3][2][ii] = -0.809 + (0.09045 * ii);
+            posMCHs[4][1][ii] = 0 + (0.029 * ii);
+            posMCHs[4][2][ii] = 1F - (0.09045 * ii);
+            posMCHs[5][1][ii] = 0.5877 - (0.0765F * ii);
+            posMCHs[5][2][ii] = -0.809 + (0.0559 * ii);
         }
         //以下から5角形の描画
-        //1画
-        y=1F;
-        ii = 0;
-        for(float x=0F;x<0.95F;x=x+0.05F){
-            posMCH[1][1][ii] = x;
-            posMCH[1][2][ii] = y;
-            ii ++;
-            y=y-0.0360F;
-        }
-        //2画
-        y=0.309F;
-        ii = 0;
-        for(float x=0.95F;x>0.58F;x=x-0.01F){
-            posMCH[1][1][ii] = x;
-            posMCH[1][2][ii] = y;
-            ii ++;
-            y=y-0.03007F;
-        }
-        //3画
-        ii = 0;
-        for(float x=0.58F;x>-0.58F;x=x-0.05F){
-            posMCH[1][1][ii] = x;
-            posMCH[1][2][ii] = -0.809F;
-            ii ++;
-        }
-        //4画
-        y=-0.809F;
-        ii = 0;
-        for(float x=-0.58F;x>-0.95F;x=x-0.01F){
-            posMCH[1][1][ii] = x;
-            posMCH[1][2][ii] = y;
-            ii ++;
-            y=y+0.03007F;
-        }
-        //5画
-        y=0.309F;
-        ii = 0;
-        for(float x=-0.95F;x<0F;x=x+0.05F){
-            posMCH[1][1][ii] = x;
-            posMCH[1][2][ii] = y;
-            ii ++;
-            y=y+0.0360F;
+        for(ii=0; ii < 20; ii++) {
+            posMCHp[1][1][ii] = 0.0475 * ii;
+            posMCHp[1][2][ii] = 1 - (0.03455 * ii);
+            posMCHp[2][1][ii] = 0.95 - (0.0185 * ii);
+            posMCHp[2][2][ii] = 0.309 - (0.03455 * ii);
+            posMCHp[3][1][ii] = 0.58 - (0.058 * ii);
+            posMCHp[3][2][ii] = -0.809;
+            posMCHp[4][1][ii] = -0.58 - (0.0185 * ii);
+            posMCHp[4][2][ii] = -0.809 + (0.03455 * ii);
+            posMCHp[5][1][ii] = -0.95 + (0.0475 * ii);
+            posMCHp[5][2][ii] = 0.309 + (0.03455 * ii);
         }
     }
 }

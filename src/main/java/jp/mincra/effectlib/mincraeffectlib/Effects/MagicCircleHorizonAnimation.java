@@ -1,5 +1,6 @@
 package jp.mincra.effectlib.mincraeffectlib.Effects;
 
+import jp.mincra.effectlib.mincraeffectlib.PreCalc;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
@@ -14,9 +15,9 @@ public class MagicCircleHorizonAnimation {
         //360/2/5
         //20
         //4
-        for(float i=0;i<360;i=i+2F){
-            loc.getWorld().spawnParticle(particle, loc.getX()+Math.sin(Math.toRadians(i))*kakeru, loc.getY()+p, loc.getZ()+Math.cos(Math.toRadians(i))*kakeru, 1, 0, 0, 0, 0);
-            loc.getWorld().spawnParticle(particle, loc.getX()+Math.sin(Math.toRadians(i))*kakeru2, loc.getY()+p, loc.getZ()+Math.cos(Math.toRadians(i))*kakeru2, 1, 0, 0, 0, 0);
+        for(int i=0;i<180;i++){
+            loc.getWorld().spawnParticle(particle, loc.getX()+ PreCalc.posMCHc[1][i] *kakeru, loc.getY()+p, loc.getZ()+ PreCalc.posMCHc[2][i] *kakeru, 1, 0, 0, 0, 0);
+            loc.getWorld().spawnParticle(particle, loc.getX()+ PreCalc.posMCHc[1][i] *kakeru2, loc.getY()+p, loc.getZ()+ PreCalc.posMCHc[1][i] *kakeru2, 1, 0, 0, 0, 0);
         }
         //1画
         float y=0.309F;
