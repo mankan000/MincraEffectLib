@@ -14,6 +14,8 @@ public final class MincraEffectLib extends JavaPlugin {
         // Plugin startup logic
 
         getCommand("meffect").setExecutor(new Commands());
+        new PreCalc();
+        PreCalc.PreCalculation();
         //Config.Config(this);
         //DataBase.setConnection();
         getLogger().info("Mincra Effect Lib読み込み完了");
