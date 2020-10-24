@@ -1,9 +1,12 @@
 package jp.mincra.effectlib.mincraeffectlib;
 
 public class PreCalc {
-    static double posMCHs[][][] = new double[5][2][20];
-    static double posMCHp[][][] = new double[5][2][20];
+    public static double[][][] posMCHs = new double[5][2][20];
+    //starのs
+    public static double[][][] posMCHp = new double[5][2][20];
+    //pentagonのp
     public static double[][] posMCHc = new double [2][180];
+    //circleのc
     static void PreCalculation() {
         int ii = 0;
         //public float posMCH[][][] = new float[10][2][60];

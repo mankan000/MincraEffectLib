@@ -8,11 +8,20 @@ import org.bukkit.command.CommandSender;
 import jp.mincra.effectlib.mincraeffectlib.Effects.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 
 public class Commands implements CommandExecutor {
+    BukkitTask task;
+    JavaPlugin plugin;
+    public Commands(JavaPlugin plugin){
+        this.plugin = plugin;
+    }
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Entity caster = null;
+        MagicCircleHorizonAnimation mcha;
         if (sender instanceof Entity) caster = (Entity)sender;
         switch (args[0]) {
             case "list":
@@ -33,7 +42,9 @@ public class Commands implements CommandExecutor {
             case "magiccirclehorizonanimation":
             case "mcha":
                 if (sender instanceof Entity && args.length > 1) {
-                    new MagicCircleHorizonAnimation(caster, args[1]);
+                    //mcha = new MagicCircleHorizonAnimation(caster, args[1]);
+                    //task = plugin.getServer().getScheduler().runTaskTimer(plugin,mcha,0L,1L);
+                    new MagicCircleHorizonAnimation((Entity) sender, args[1]).runTaskTimer((Plugin) this,0L,1L);
                 }
                 return true;
             case "basic":
@@ -44,6 +55,7 @@ public class Commands implements CommandExecutor {
                     return CommandErrorManager(sender);
                 }
             default:
+
                 return false;
         }
     }
