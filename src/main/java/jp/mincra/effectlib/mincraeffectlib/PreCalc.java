@@ -39,9 +39,9 @@ public class PreCalc {
             posMCHp[2][0][ii] = 0.58 - (0.058 * ii);
             posMCHp[2][1][ii] = -0.809;
             posMCHp[3][0][ii] = -0.58 - (0.0185 * ii);
-            posMCHp[4][1][ii] = -0.809 + (0.03455 * ii);
-            posMCHp[5][0][ii] = -0.95 + (0.0475 * ii);
-            posMCHp[6][1][ii] = 0.309 + (0.03455 * ii);
+            posMCHp[3][1][ii] = -0.809 + (0.03455 * ii);
+            posMCHp[4][0][ii] = -0.95 + (0.0475 * ii);
+            posMCHp[4][1][ii] = 0.309 + (0.03455 * ii);
         }
     }
 }
