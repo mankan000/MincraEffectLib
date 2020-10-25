@@ -13,7 +13,7 @@ public final class MincraEffectLib extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
 
-        getCommand("meffect").setExecutor(new Commands());
+        getCommand("meffect").setExecutor(new Commands(this));
         new PreCalc();
         PreCalc.PreCalculation();
         //Config.Config(this);

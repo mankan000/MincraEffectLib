@@ -23,6 +23,10 @@ public class Commands implements CommandExecutor {
         Entity caster = null;
         MagicCircleHorizonAnimation mcha;
         if (sender instanceof Entity) caster = (Entity)sender;
+        if (args.length < 1){
+            //argsが空っぽの時の処理
+            return false;
+        }
         switch (args[0]) {
             case "list":
                 sender.sendMessage("テスト１");

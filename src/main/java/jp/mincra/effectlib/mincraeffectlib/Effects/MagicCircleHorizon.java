@@ -1,13 +1,43 @@
 package jp.mincra.effectlib.mincraeffectlib.Effects;
 
+import jp.mincra.effectlib.mincraeffectlib.PreCalc;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
 
 public class MagicCircleHorizon {
-    public MagicCircleHorizon(Entity caster, String _particle){
-        Particle particle = Particle.valueOf(_particle);
-        Location loc = caster.getLocation();
+    private Particle particle;
+    private Location loc;
+    public MagicCircleHorizon(Entity caster, String _particle) {
+        particle = Particle.valueOf(_particle);
+        loc = caster.getLocation();
+        float _radius = 1.6F;
+        float _radius2 = _radius * 1.25F;
+        float p = 0.2F;
+        //BukkitTask task=new Magicsquare(player,s,kakeru,kakeru2,kakeru3,p,loc).runTaskLater(this,40);
+        //BukkitTask task2=new Magicsquare2(player,s,kakeru,kakeru2,kakeru3,p,loc).runTaskLater(this,40);
+        //BukkitTask task3=new Magicsquare3(player,s,kakeru,kakeru2,kakeru3,p,loc).runTaskLater(this,40);
+        for (int i = 0; i<180; i++){
+            loc.getWorld().spawnParticle(particle, loc.getX() + PreCalc.posMCHc[0][i] * _radius, loc.getY() + p, loc.getZ() + PreCalc.posMCHc[1][i] * _radius, 1, 0, 0, 0, 0);
+            loc.getWorld().spawnParticle(particle, loc.getX() + PreCalc.posMCHc[0][i] * _radius2, loc.getY() + p, loc.getZ() + PreCalc.posMCHc[1][i] * _radius2, 1, 0, 0, 0, 0);
+        }
+        for (int i = 0; i<20; i++){
+            loc.getWorld().spawnParticle(particle, loc.getX() + PreCalc.posMCHs[0][0][i] * _radius, loc.getY() + p, loc.getZ() + PreCalc.posMCHs[0][1][i] * _radius, 1, 0, 0, 0, 0);
+            loc.getWorld().spawnParticle(particle, loc.getX() + PreCalc.posMCHs[1][0][i] * _radius, loc.getY() + p, loc.getZ() + PreCalc.posMCHs[1][1][i] * _radius, 1, 0, 0, 0, 0);
+            loc.getWorld().spawnParticle(particle, loc.getX() + PreCalc.posMCHs[2][0][i] * _radius, loc.getY() + p, loc.getZ() + PreCalc.posMCHs[2][1][i] * _radius, 1, 0, 0, 0, 0);
+            loc.getWorld().spawnParticle(particle, loc.getX() + PreCalc.posMCHs[3][0][i] * _radius, loc.getY() + p, loc.getZ() + PreCalc.posMCHs[3][1][i] * _radius, 1, 0, 0, 0, 0);
+            loc.getWorld().spawnParticle(particle, loc.getX() + PreCalc.posMCHs[4][0][i] * _radius, loc.getY() + p, loc.getZ() + PreCalc.posMCHs[4][1][i] * _radius, 1, 0, 0, 0, 0);
+            loc.getWorld().spawnParticle(particle, loc.getX() + PreCalc.posMCHp[0][0][i] * _radius, loc.getY() + p, loc.getZ() + PreCalc.posMCHp[0][1][i] * _radius, 1, 0, 0, 0, 0);
+            loc.getWorld().spawnParticle(particle, loc.getX() + PreCalc.posMCHp[1][0][i] * _radius, loc.getY() + p, loc.getZ() + PreCalc.posMCHp[1][1][i] * _radius, 1, 0, 0, 0, 0);
+            loc.getWorld().spawnParticle(particle, loc.getX() + PreCalc.posMCHp[2][0][i] * _radius, loc.getY() + p, loc.getZ() + PreCalc.posMCHp[2][1][i] * _radius, 1, 0, 0, 0, 0);
+            loc.getWorld().spawnParticle(particle, loc.getX() + PreCalc.posMCHp[3][0][i] * _radius, loc.getY() + p, loc.getZ() + PreCalc.posMCHp[3][1][i] * _radius, 1, 0, 0, 0, 0);
+            loc.getWorld().spawnParticle(particle, loc.getX() + PreCalc.posMCHp[4][0][i] * _radius, loc.getY() + p, loc.getZ() + PreCalc.posMCHp[4][1][i] * _radius, 1, 0, 0, 0, 0);
+        }
+    }
+
+    public void MagicCircleHorizonOld(Entity caster, String _particle){
+        particle = Particle.valueOf(_particle);
+        loc = caster.getLocation();
         float kakeru = 1.6F;
         float kakeru2 = kakeru * 1.25F;
         float p=0.2F;
