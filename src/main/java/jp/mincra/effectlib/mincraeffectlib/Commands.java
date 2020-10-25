@@ -48,7 +48,7 @@ public class Commands implements CommandExecutor {
                 if (sender instanceof Entity && args.length > 1) {
                     //mcha = new MagicCircleHorizonAnimation(caster, args[1]);
                     //task = plugin.getServer().getScheduler().runTaskTimer(plugin,mcha,0L,1L);
-                    new MagicCircleHorizonAnimation((Entity) sender, args[1]).runTaskTimer((Plugin) this,0L,1L);
+                    new MagicCircleHorizonAnimation((Entity) sender, args[1]).runTaskTimer(plugin,0L,1L);
                 }
                 return true;
             case "basic":

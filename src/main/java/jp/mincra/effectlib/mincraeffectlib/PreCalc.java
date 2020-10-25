@@ -19,10 +19,10 @@ public class PreCalc {
         }
         //
         for(ii=0; ii < 20; ii++){
-            posMCHs[0][0][ii] = -0.95 + (0.95 * ii);
+            posMCHs[0][0][ii] = -0.95 + (0.095 * ii);
             posMCHs[0][1][ii] = 0.309;
             posMCHs[1][0][ii] = 0.95 - (0.0765 * ii);
-            posMCHs[1][1][ii] = 0.0309 - (0.0559 * ii);
+            posMCHs[1][1][ii] = 0.309 - (0.0559 * ii);
             posMCHs[2][0][ii] = -0.58 + (0.029 * ii);
             posMCHs[2][1][ii] = -0.809 + (0.09045 * ii);
             posMCHs[3][0][ii] = 0 + (0.029 * ii);
@@ -35,11 +35,11 @@ public class PreCalc {
             posMCHp[0][0][ii] = 0.0475 * ii;
             posMCHp[0][1][ii] = 1 - (0.03455 * ii);
             posMCHp[1][0][ii] = 0.95 - (0.0185 * ii);
-            posMCHp[1][1][ii] = 0.309 - (0.03455 * ii);
+            posMCHp[1][1][ii] = 0.309 - (0.0559 * ii);
             posMCHp[2][0][ii] = 0.58 - (0.058 * ii);
             posMCHp[2][1][ii] = -0.809;
             posMCHp[3][0][ii] = -0.58 - (0.0185 * ii);
-            posMCHp[3][1][ii] = -0.809 + (0.03455 * ii);
+            posMCHp[3][1][ii] = -0.809 + (0.0559 * ii);
             posMCHp[4][0][ii] = -0.95 + (0.0475 * ii);
             posMCHp[4][1][ii] = 0.309 + (0.03455 * ii);
         }
