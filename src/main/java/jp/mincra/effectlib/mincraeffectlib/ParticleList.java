@@ -7,6 +7,7 @@ import org.bukkit.Particle;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 
 import java.util.*;
 
@@ -60,5 +61,17 @@ public class ParticleList {
             ss.append(s).append(" / ");
         }
         return ss.toString();
+    }
+    public static Boolean Check(Entity _caster,String _particle){
+        if (SafeList.contains(_particle)){
+            return true;
+        } else if (UnsafeList.contains(_particle)){
+            if(_caster instanceof Player){
+                new MessageManager(_caster,"未対応のパーティクルです。");
+            }
+            return false;
+        } else {
+            return false;
+        }
     }
 }

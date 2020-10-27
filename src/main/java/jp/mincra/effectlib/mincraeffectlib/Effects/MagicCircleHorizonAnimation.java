@@ -1,25 +1,33 @@
 package jp.mincra.effectlib.mincraeffectlib.Effects;
 
+import jp.mincra.effectlib.mincraeffectlib.ParticleList;
 import jp.mincra.effectlib.mincraeffectlib.PreCalc;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
+import static org.bukkit.Bukkit.getLogger;
+
 public class MagicCircleHorizonAnimation extends BukkitRunnable{
     private float _radius ;
     private float _radius2 ;
     private float p;
+    private Entity caster;
     private Location loc;
+    private String pString;
     private Particle particle;
     private int counter;
 
     public MagicCircleHorizonAnimation(Entity _caster, String _particle) {
-        this.particle = Particle.valueOf(_particle);
+        this.pString = _particle.toUpperCase();
+        this.particle = Particle.valueOf(pString);
+        this.caster = _caster;
         this.loc = _caster.getLocation();
         this._radius = 1.6F;
         this._radius2 = (float) (_radius * 1.25);
@@ -28,6 +36,7 @@ public class MagicCircleHorizonAnimation extends BukkitRunnable{
     }
     @Override
     public void run() {
+        if (!ParticleList.Check(caster,pString)) this.cancel();
         int sub_counter;
         for (int i = 0; i<9 ; i++){
             //外周の円は点を180個用意してあるため、1tickあたり9点を表示
