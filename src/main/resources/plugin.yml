@@ -16,16 +16,8 @@ default-permission: OP
 commands:
   meffect:
     description: Commands for MincraEffectLib.help
-    usage: /<command> [list/basic]
+    usage: /<command> [list/plist/basic/plist/mch/mcha]
     permission: mincra.effectlib
-  meffect list:
-    description: List of Effects
-    usage: /<command>
-    permission: mincra.effectlib.list
-  meffect basic:
-    permission: mincra.effectlib.basic
-    description: test some particle
-    usage: /<command> basic <particle> <self/target> <count>
 
 permissions:
   mincra.effectlib.*:
