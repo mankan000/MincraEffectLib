@@ -66,11 +66,10 @@ public class ParticleList {
         if (SafeList.contains(_particle)){
             return true;
         } else if (UnsafeList.contains(_particle)){
-            if(_caster instanceof Player){
-                new MessageManager(_caster,"未対応のパーティクルです。");
-            }
+            new MessageManager(_caster,"未対応のパーティクルです。");
             return false;
         } else {
+            new MessageManager(_caster,"パーティクル名が不正です");
             return false;
         }
     }
