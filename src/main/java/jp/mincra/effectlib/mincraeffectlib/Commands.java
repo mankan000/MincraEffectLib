@@ -12,15 +12,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
+import org.jetbrains.annotations.NotNull;
 
 
 public class Commands implements CommandExecutor {
     BukkitTask task;
-    JavaPlugin plugin;
-    public Commands(JavaPlugin plugin){
+    private JavaPlugin plugin;
+    Commands(JavaPlugin plugin){
         this.plugin = plugin;
     }
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         Entity caster = null;
         MagicCircleHorizonAnimation mcha;
         if (sender instanceof Entity) caster = (Entity)sender;
