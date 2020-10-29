@@ -1,5 +1,6 @@
 package jp.mincra.effectlib.mincraeffectlib;
 
+import org.bukkit.Particle;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -34,6 +35,14 @@ public class Commands implements CommandExecutor {
             case "particlelist":
             case "plist" :
                 new ParticleList(sender, args);
+                return true;
+            case "gettype":
+                if (args.length > 1 && ParticleList.Check(sender,args[1])) {
+                    new MessageManager(sender,String.valueOf(Particle.valueOf(args[1]).getDataType()));
+                } else {
+                    new MessageManager(sender,"/meffect gettype <particle>");
+                    return true;
+                }
                 return true;
             case "magiccirclehorizon":
             case "magiccirclehorizontal":

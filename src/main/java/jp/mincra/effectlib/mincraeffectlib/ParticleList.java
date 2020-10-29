@@ -62,7 +62,7 @@ public class ParticleList {
         }
         return ss.toString();
     }
-    public static Boolean Check(Entity _caster,String _particle){
+    public static Boolean Check(CommandSender _caster,String _particle){
         if (SafeList.contains(_particle)){
             return true;
         } else if (UnsafeList.contains(_particle)){

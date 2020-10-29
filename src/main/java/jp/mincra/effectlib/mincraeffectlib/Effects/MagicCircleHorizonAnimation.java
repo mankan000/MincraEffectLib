@@ -31,7 +31,7 @@ public class MagicCircleHorizonAnimation extends BukkitRunnable{
         this.loc = _caster.getLocation();
         this._radius = 1.6F;
         this._radius2 = (float) (_radius * 1.25);
-        this.p = 1.2F;
+        this.p = 0.2F;
         this.counter = 0;
     }
     @Override
