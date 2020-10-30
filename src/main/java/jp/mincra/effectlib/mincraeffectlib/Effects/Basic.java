@@ -11,6 +11,7 @@ import org.bukkit.entity.LivingEntity;
 public class Basic {
 
     public Basic(Entity caster, String[] args) {
+        Object obj = null;
         //usage: /<command> basic <particle> [self/target] <count>
         LivingEntity le = (LivingEntity)caster;
         args[1] = args[1].toUpperCase();
@@ -28,7 +29,7 @@ public class Basic {
         Particle particle = Particle.valueOf(args[1]);
         //if (particle == null) particle = Particle.EXPLOSION_HUGE;
         try{
-            loc.getWorld().spawnParticle(particle,loc,count);
+            loc.getWorld().spawnParticle(particle,loc,count,0,0,0,0, obj);
         } catch(NullPointerException n){
             caster.sendMessage(ChatColor.GREEN + "[MincraEffectLib]" + ChatColor.RED + "spawnParticle失敗。");
         }

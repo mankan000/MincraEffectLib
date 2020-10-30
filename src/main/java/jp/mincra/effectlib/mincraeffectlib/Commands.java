@@ -1,5 +1,6 @@
 package jp.mincra.effectlib.mincraeffectlib;
 
+import org.bukkit.Color;
 import org.bukkit.Particle;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -51,16 +52,18 @@ public class Commands implements CommandExecutor {
             case "mch":
                 if (sender instanceof Entity && args.length > 1) {
                     new MagicCircleHorizon(caster, args[1]);
+                    return true;
+                }else {
+                    return CommandErrorManager(sender);
                 }
-                return true;
             case "magiccirclehorizonanimation":
             case "mcha":
                 if (sender instanceof Entity && args.length > 1) {
-                    //mcha = new MagicCircleHorizonAnimation(caster, args[1]);
-                    //task = plugin.getServer().getScheduler().runTaskTimer(plugin,mcha,0L,1L);
                     new MagicCircleHorizonAnimation((Entity) sender, args[1]).runTaskTimer(plugin,0L,1L);
+                    return true;
+                } else {
+                    return CommandErrorManager(sender);
                 }
-                return true;
             case "basic":
                 if (sender instanceof Entity && args.length > 1) {
                     new Basic(caster, args);
@@ -75,8 +78,9 @@ public class Commands implements CommandExecutor {
     }
 
     private boolean CommandErrorManager(CommandSender sender) {
-        if (sender instanceof Entity){
-            sender.sendMessage("[MincraEffectLib] パラメタが足りません");
+        if (sender instanceof Player){
+            sender.sendMessage(Color.GREEN + "[MincraEffectLib]" + Color.NAVY + "パラメタが足りません");
+            sender.sendMessage(Color.GREEN + "[MincraEffectLib]" + Color.NAVY + "/meffect [エフェクト名] [パーティクルの種類] [エフェクト位置] [エフェクトサイズ] [フレーム更新タイミング(tick)] [追加情報]");
         } else {
             sender.sendMessage("[MincraEffectLib] コンソールからの実行はできません");
         }
