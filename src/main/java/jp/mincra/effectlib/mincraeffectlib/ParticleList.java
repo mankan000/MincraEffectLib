@@ -12,10 +12,11 @@ import org.bukkit.entity.Player;
 import java.util.*;
 
 public class ParticleList {
-    private static final List<String> plist = setParticleList();
+    public static final List<String> plist = setParticleList();
     private static final String listAsString = setParticleListForString();
     public static final List<String> SafeList = setSafeParticleList();
     public static final List<String> UnsafeList = setUnSafeParticleList();
+
     public ParticleList(CommandSender ccaster, String[] args){
         Random random = new Random();
         int r = random.nextInt(78);
