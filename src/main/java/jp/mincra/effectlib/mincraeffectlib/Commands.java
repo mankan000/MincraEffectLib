@@ -32,6 +32,7 @@ public class Commands implements CommandExecutor {
         }
         switch (args[0]) {
             case "list":
+            case "effectlist":
                 sender.sendMessage("テスト１");
                 return true;
             case "particlelist":
@@ -85,5 +86,8 @@ public class Commands implements CommandExecutor {
             sender.sendMessage("[MincraEffectLib] コンソールからの実行はできません");
         }
         return false;
+    }
+    private void CommandParser(){
+
     }
 }
