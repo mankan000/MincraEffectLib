@@ -1,5 +1,6 @@
 package jp.mincra.effectlib.mincraeffectlib;
 
+import org.bukkit.Particle;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -58,7 +59,7 @@ public class CommandTabCompleter implements TabCompleter {
             //第三引数ではパーティクルの追加情報を。
             if (args[2].length() == 0 && ParticleList.SafeList.contains(args[1])) {
                 return Collections.singletonList("0");
-            } else if(args[2].length() == 0 ) {
+            } else if(args[2].length() == 0 && String.valueOf(Particle.valueOf(args[1]).getDataType()).equals("interface org.bukkit.block.data.BlockDataK")) {
                 //入力されている文字列と先頭一致
                 if ("effectlist".startsWith(args[2])) {
                     return Collections.singletonList("effectlist");
