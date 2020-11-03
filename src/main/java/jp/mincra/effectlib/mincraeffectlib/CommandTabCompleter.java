@@ -50,25 +50,18 @@ public class CommandTabCompleter implements TabCompleter {
                 if ("random".startsWith(args[1])) {
                     return Collections.singletonList("random");
                 }
+                /*if ("unsafe".startsWith(args[1])) {
+                    return Collections.singletonList("unsafe");
+                }*/
             }
         } else if (args.length == 3) {
             //第三引数ではパーティクルの追加情報を。
-            if (args[2].length() == 0) {
-                return ParticleList.plist;
-            } else {
+            if (args[2].length() == 0 && ParticleList.SafeList.contains(args[1])) {
+                return Collections.singletonList("0");
+            } else if(args[2].length() == 0 ) {
                 //入力されている文字列と先頭一致
                 if ("effectlist".startsWith(args[2])) {
                     return Collections.singletonList("effectlist");
-                } else if ("particlelist".startsWith(args[2])) {
-                    return Collections.singletonList("particlelist");
-                } else if ("gettype".startsWith(args[2])) {
-                    return Collections.singletonList("gettype");
-                } else if ("basic".startsWith(args[2])) {
-                    return Collections.singletonList("basic");
-                } else if ("magiccirclehorizon".startsWith(args[2])) {
-                    return Collections.singletonList("magiccirclehorizon");
-                } else if ("magiccirclehorizonanimation".startsWith(args[2])) {
-                    return Collections.singletonList("magiccirclehorizonanimation");
                 }
             }
         }
