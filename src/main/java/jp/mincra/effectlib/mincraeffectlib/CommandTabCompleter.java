@@ -57,9 +57,20 @@ public class CommandTabCompleter implements TabCompleter {
             }
         } else if (args.length == 3) {
             //第三引数ではパーティクルの追加情報を。
-            if (args[2].length() == 0 && ParticleList.SafeList.contains(args[1])) {
+            if (args[2].length() == 0 &&  String.valueOf(Particle.valueOf(args[1]).getDataType()).equals("class java.lang.Void")) {
                 return Collections.singletonList("0");
-            } else if(args[2].length() == 0 && String.valueOf(Particle.valueOf(args[1]).getDataType()).equals("interface org.bukkit.block.data.BlockDataK")) {
+            } else if(args[2].length() == 0 && String.valueOf(Particle.valueOf(args[1]).getDataType()).equals("interface org.bukkit.block.data.BlockData")) {
+                //入力されている文字列と先頭一致
+
+                if ("effectlist".startsWith(args[2])) {
+                    return Collections.singletonList("effectlist");
+                }
+            } else if(args[2].length() == 0 && String.valueOf(Particle.valueOf(args[1]).getDataType()).equals("class org.bukkit.inventory.ItemStack")) {
+                //入力されている文字列と先頭一致
+                if ("effectlist".startsWith(args[2])) {
+                    return Collections.singletonList("effectlist");
+                }
+            } else if(args[2].length() == 0 && String.valueOf(Particle.valueOf(args[1]).getDataType()).equals("class java.lang.Particle$DustOptions")) {
                 //入力されている文字列と先頭一致
                 if ("effectlist".startsWith(args[2])) {
                     return Collections.singletonList("effectlist");
